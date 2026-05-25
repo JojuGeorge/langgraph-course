@@ -1,4 +1,4 @@
-# Reasoning Engine
+# Reasoning Engine and Tool setup (+ binding)
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
