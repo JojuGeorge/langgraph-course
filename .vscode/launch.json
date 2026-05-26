@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        
+        {
+            "name": "Python Debugger: Python File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "D:/UDEMY/LangChain/Coding/langgraph-course/reflexion_agent",
+            "envFile": "D:/UDEMY/LangChain/Coding/langgraph-course/reflexion_agent/.env"
+        }
+    ]
+}
