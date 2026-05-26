@@ -7,13 +7,14 @@ from langchain_core.output_parsers.openai_tools import (
 )
 from langchain_core.messages import HumanMessage
 import datetime
+import os
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
-llm = ChatOpenAI(model="o4-mini")
+llm = ChatOpenAI(model="gpt-4o-mini", api_key=os.environ["OPENAI_API_KEY"])
 parser = JsonOutputToolsParser(return_id=True)
 parser_pydantic = PydanticToolsParser(tools=[AnswerQuestion])
 
@@ -58,6 +59,7 @@ revisor = actor_prompt_template.partial(
 ) | llm.bind_tools(tools=[ReviseAnswer], tool_choice="ReviseAnswer")
 
 
+# for testing purpose
 if __name__ == "__main__":
     human_message = HumanMessage(
         content="Write about AI-Powered SOC / autonomous soc  problem domain,"

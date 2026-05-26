@@ -21,7 +21,7 @@ def revise_node(state: MessagesState):
     return {"messages": [response]}
 
 
-def event_loop(state: MessagesState) -> Literal["execute_tools", END]:
+def event_loop(state: MessagesState) -> Literal["execute_tools", "__end__"]:
     """Determine whether to continue or end based on iteration count."""
     count_tool_visits = sum(
         isinstance(item, ToolMessage) for item in state["messages"]
@@ -59,4 +59,16 @@ res = graph.invoke(
 last_message = res["messages"][-1]
 if isinstance(last_message, AIMessage) and last_message.tool_calls:
     print(last_message.tool_calls[0]["args"]["answer"])
+    print("*" * 200)
+
+print("=" * 200)
+print(last_message.tool_calls[0]["args"]["answer"])
+print("=" * 200)
+print(last_message.tool_calls[0]["args"]["reflection"]["missing"])
+print("=" * 200)
+print(last_message.tool_calls[0]["args"]["reflection"]["superfluous"])
+print("=" * 200)
+print(last_message.tool_calls[0]["args"]["search_queries"])
+print("=" * 200)
+print("=" * 200)
 print(res)
