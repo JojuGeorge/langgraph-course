@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 class RouteQuery(BaseModel):
     """Route a user query to the most relevant datasource."""
 
+    # Now when we initialize the field object, if we put here the ellipsis here, then this means that this field will be required once we instantiate an object of this class.
     datasource: Literal["vectorstore", "websearch"] = Field(
         ...,
         description="Given a user question choose to route it to web search or a vectorstore.",
