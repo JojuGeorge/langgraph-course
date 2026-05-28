@@ -12,3 +12,13 @@ def test_retrieval_grader_answer_yes() -> None:
     res: GradeDocument = retrieval_grader.invoke({"question": question, "document": doc_txt})
     
     assert res.binary_score == "yes"
+    
+    
+def test_retrieval_grader_answer_no() -> None:
+    question = "Best pizza place?"
+    docs = retriever.invoke(question)
+    doc_txt = docs[1].page_content
+    
+    res: GradeDocument = retrieval_grader.invoke({"question": question, "document": doc_txt})
+    
+    assert res.binary_score == "no"
