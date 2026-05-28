@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from typing import Any, Dict
-from langchain_community import Document
+from langchain_core.documents import Document
 from langchain_tavily import TavilySearch
 from graph.state import GraphState
 
